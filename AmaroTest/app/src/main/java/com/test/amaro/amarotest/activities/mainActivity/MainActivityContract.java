@@ -18,9 +18,11 @@ public interface MainActivityContract {
         void toggleTryAgain(int status);
 
         void showProducts(List<ProductsItem> productsItemList);
+
+        void setSubtitle(String subtitle);
     }
 
     interface Presenter extends BasePresenter {
-
+        void loadProducts();
     }
 }

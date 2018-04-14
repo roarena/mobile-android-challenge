@@ -87,6 +87,7 @@ public class CatalogueAdapter extends RecyclerView.Adapter<CatalogueAdapter.Cata
 
     @Override
     public int getItemCount() {
+        if (mDataSet == null) return 0;
         return mDataSet.size();
     }
 }

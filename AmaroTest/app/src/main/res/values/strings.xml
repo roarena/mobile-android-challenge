@@ -3,7 +3,9 @@
     <string name="menu_filter">Filter</string>
     <string name="products_count">%1$s products</string>
     <string name="loading">Loading...</string>
-
+    <string name="error">Error</string>
+    <string name="error_loading">Ops! =( \nCouldn\'t retrieve products information.</string>
+    <string name="btn_try_again">Try Again</string>
     <string name="name_not_found">Name not found</string>
     <string name="price_not_found">Price not found</string>
     <string name="installments_not_found">Installments not found</string>
