@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
@@ -14,6 +15,7 @@ import android.widget.TextView;
 
 import com.test.amaro.amarotest.R;
 import com.test.amaro.amarotest.data.model.ProductsItem;
+import com.test.amaro.amarotest.utils.C;
 
 import java.util.List;
 
@@ -70,6 +72,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
     private CatalogueAdapter.ListItemClickListener listItemClickListener = new CatalogueAdapter.ListItemClickListener() {
         @Override
         public void onListItemClick(ProductsItem product) {
+            Log.d(C.LOG_TAG, product.getName());
         }
     };
 
