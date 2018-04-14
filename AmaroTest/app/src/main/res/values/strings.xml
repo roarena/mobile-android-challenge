@@ -1,3 +1,10 @@
 <resources>
-    <string name="app_name">AmaroTest</string>
+    <string name="app_name">Amaro\'s \nall-time best-sellers.</string>
+    <string name="menu_filter">Filter</string>
+    <string name="products_count">%1$s products</string>
+    <string name="loading">Loading...</string>
+
+    <string name="name_not_found">Name not found</string>
+    <string name="price_not_found">Price not found</string>
+    <string name="installments_not_found">Installments not found</string>
 </resources>
