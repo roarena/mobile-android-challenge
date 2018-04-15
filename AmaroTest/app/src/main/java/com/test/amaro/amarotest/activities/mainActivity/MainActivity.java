@@ -5,7 +5,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.Menu;
@@ -60,7 +62,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
         setSupportActionBar(mToolbar);
 
         mCatalogueAdapter = new CatalogueAdapter(getBaseContext(), listItemClickListener);
-        mLayoutManager = new GridLayoutManager(this, 2);
+        mLayoutManager = new StaggeredGridLayoutManager(2, LinearLayoutManager.VERTICAL);
 
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mCatalogueAdapter);

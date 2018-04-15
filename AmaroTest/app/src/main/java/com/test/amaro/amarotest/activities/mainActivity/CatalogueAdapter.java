@@ -35,6 +35,8 @@ public class CatalogueAdapter extends RecyclerView.Adapter<CatalogueAdapter.Cata
         TextView tvProductPrice;
         @BindView(R.id.tv_card_installments)
         TextView tvProductInstallments;
+        @BindView(R.id.tv_card_discount)
+        TextView tvProductDiscount;
 
         private CatalogueAdapterViewHolder(View itemView) {
             super(itemView);
@@ -78,6 +80,13 @@ public class CatalogueAdapter extends RecyclerView.Adapter<CatalogueAdapter.Cata
             Picasso.get().load(mDataSet.get(position).getImage()).placeholder(R.drawable.placeholder).into(holder.ivProductPicture);
         } else {
             Picasso.get().load(R.drawable.placeholder).into(holder.ivProductPicture);
+        }
+
+        if (mDataSet.get(position).isOn_sale() && !mDataSet.get(position).getDiscount_percentage().isEmpty()) {
+            holder.tvProductDiscount.setVisibility(View.VISIBLE);
+            holder.tvProductDiscount.setText(mContext.getString(R.string.discount_percentage, mDataSet.get(position).getDiscount_percentage()));
+        } else {
+            holder.tvProductDiscount.setVisibility(View.GONE);
         }
 
         holder.tvProductName.setText(mDataSet.get(position).getName().isEmpty() ? mContext.getString(R.string.name_not_found) : mDataSet.get(position).getName());
