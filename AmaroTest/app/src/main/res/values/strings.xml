@@ -9,4 +9,5 @@
     <string name="name_not_found">Name not found</string>
     <string name="price_not_found">Price not found</string>
     <string name="installments_not_found">Installments not found</string>
+    <string name="details_sizes">Sizes</string>
 </resources>

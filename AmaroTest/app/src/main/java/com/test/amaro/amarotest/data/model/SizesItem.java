@@ -1,5 +1,8 @@
 package com.test.amaro.amarotest.data.model;
 
+import org.parceler.Parcel;
+
+@Parcel
 public class SizesItem {
 
     private String size;

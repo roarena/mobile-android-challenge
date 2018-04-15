@@ -8,7 +8,9 @@ public class C {
 
     public static final String LOG_TAG = "AmaroTest";
 
-    //public static final String BASE_URL = "http://www.mocky.io";
-    public static final String BASE_URL = "http://www.jasonbase.com";
+    public static final String BASE_URL = "http://www.mocky.io";
+    //public static final String BASE_URL = "http://www.jasonbase.com";
+
+    public static final String PRODUCT_BUNDLE = "PRODUCT_DETAILS";
 
 }

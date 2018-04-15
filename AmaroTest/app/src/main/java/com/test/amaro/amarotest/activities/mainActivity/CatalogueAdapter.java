@@ -42,7 +42,7 @@ public class CatalogueAdapter extends RecyclerView.Adapter<CatalogueAdapter.Cata
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    mOnClickListener.onListItemClick(mDataSet.get(getAdapterPosition()));
+                    mOnClickListener.onListItemClick(mDataSet.get(getAdapterPosition()), ivProductPicture);
                 }
             });
         }
@@ -54,7 +54,7 @@ public class CatalogueAdapter extends RecyclerView.Adapter<CatalogueAdapter.Cata
     }
 
     public interface ListItemClickListener {
-        void onListItemClick(ProductsItem product);
+        void onListItemClick(ProductsItem product, View cardImage);
     }
 
     public void replaceData(List<ProductsItem> productsItems) {
@@ -81,8 +81,8 @@ public class CatalogueAdapter extends RecyclerView.Adapter<CatalogueAdapter.Cata
         }
 
         holder.tvProductName.setText(mDataSet.get(position).getName().isEmpty() ? mContext.getString(R.string.name_not_found) : mDataSet.get(position).getName());
-        holder.tvProductPrice.setText(mDataSet.get(position).getActual_price().isEmpty() ? mContext.getString(R.string.name_not_found) : mDataSet.get(position).getActual_price());
-        holder.tvProductInstallments.setText(mDataSet.get(position).getInstallments().isEmpty() ? mContext.getString(R.string.name_not_found) : mDataSet.get(position).getInstallments());
+        holder.tvProductPrice.setText(mDataSet.get(position).getActual_price().isEmpty() ? mContext.getString(R.string.price_not_found) : mDataSet.get(position).getActual_price());
+        holder.tvProductInstallments.setText(mDataSet.get(position).getInstallments().isEmpty() ? mContext.getString(R.string.installments_not_found) : mDataSet.get(position).getInstallments());
     }
 
     @Override

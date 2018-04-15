@@ -1,7 +1,12 @@
 package com.test.amaro.amarotest.data.model;
 
+import com.test.amaro.amarotest.utils.Utils;
+
+import org.parceler.Parcel;
+
 import java.util.List;
 
+@Parcel
 public class ProductsItem {
     private String codeColor;
     private String regular_price;
@@ -16,7 +21,7 @@ public class ProductsItem {
     private String discount_percentage;
 
 
-    private boolean onSale;
+    private boolean on_sale;
 
     public void setCodeColor(String codeColor) {
         this.codeColor = codeColor;
@@ -55,7 +60,8 @@ public class ProductsItem {
     }
 
     public List<SizesItem> getSizes() {
-        return sizes;
+
+        return Utils.clearNotAvailableSizes(sizes);
     }
 
     public void setActual_price(String actual_price) {
@@ -106,12 +112,12 @@ public class ProductsItem {
         return discount_percentage;
     }
 
-    public void setOnSale(boolean onSale) {
-        this.onSale = onSale;
+    public void setOn_sale(boolean on_sale) {
+        this.on_sale = on_sale;
     }
 
-    public boolean isOnSale() {
-        return onSale;
+    public boolean isOn_sale() {
+        return on_sale;
     }
 
     @Override
@@ -129,7 +135,7 @@ public class ProductsItem {
                         ",color_slug = '" + colorSlug + '\'' +
                         ",style = '" + style + '\'' +
                         ",discount_percentage = '" + discount_percentage + '\'' +
-                        ",on_sale = '" + onSale + '\'' +
+                        ",on_sale = '" + on_sale + '\'' +
                         "}";
     }
 }

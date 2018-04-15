@@ -5,4 +5,5 @@
     <color name="colorAccent">#9E9E9E</color>
     <color name="activity_background">#BDBDBD</color>
     <color name="subtitle_color">#808080</color>
+    <color name="old_price_color">#C62828</color>
 </resources>

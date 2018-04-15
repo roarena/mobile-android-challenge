@@ -1,5 +1,7 @@
 package com.test.amaro.amarotest.activities.mainActivity;
 
+import android.app.ActivityOptions;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
@@ -10,12 +12,16 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.test.amaro.amarotest.R;
+import com.test.amaro.amarotest.activities.detailsActivity.DetailsActivity;
 import com.test.amaro.amarotest.data.model.ProductsItem;
 import com.test.amaro.amarotest.utils.C;
+
+import org.parceler.Parcels;
 
 import java.util.List;
 
@@ -71,8 +77,15 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
 
     private CatalogueAdapter.ListItemClickListener listItemClickListener = new CatalogueAdapter.ListItemClickListener() {
         @Override
-        public void onListItemClick(ProductsItem product) {
+        public void onListItemClick(ProductsItem product, View cardImage) {
             Log.d(C.LOG_TAG, product.getName());
+            Intent intent = new Intent(getApplicationContext(), DetailsActivity.class);
+
+            ActivityOptions options = ActivityOptions
+                    .makeSceneTransitionAnimation(MainActivity.this, cardImage, "productImage");
+
+            intent.putExtra(C.PRODUCT_BUNDLE, Parcels.wrap(product));
+            startActivity(intent, options.toBundle());
         }
     };
 
