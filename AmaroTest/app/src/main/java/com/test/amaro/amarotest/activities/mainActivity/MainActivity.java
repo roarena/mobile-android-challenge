@@ -105,26 +105,14 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
         mRgFilterGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int i) {
-                switch (i) {
-                    case R.id.rb_filter_higher:
-                        mCatalogueAdapter.replaceData(ProductsCache.getInstance().retrieveList(C.SORT_HIGHER_FIRST, mCatalogueAdapter.getList()));
-                        break;
-                    case R.id.rb_filter_lower:
-                        mCatalogueAdapter.replaceData(ProductsCache.getInstance().retrieveList(C.SORT_LOWER_FIRST, mCatalogueAdapter.getList()));
-                        break;
-                    default:
-                        mCatalogueAdapter.replaceData(ProductsCache.getInstance().getmOriginalList());
-                }
+                filterClick(i);
             }
         });
 
         mBtnClearFilter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mCatalogueAdapter.replaceData(ProductsCache.getInstance().retrieveList(C.SORT_ORIGINAL, ProductsCache.getInstance().getmOriginalList()));
-                if (mSwSale.isChecked())
-                    mSwSale.setChecked(false);
-                mRgFilterGroup.clearCheck();
+                clearFilterClicked();
             }
         });
     }
@@ -146,7 +134,9 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
     @Override
     protected void onStart() {
         super.onStart();
-        mMainActivityPresenter.start();
+        // Prevent loading from internet multiple times.
+        if (mCatalogueAdapter.getItemCount() < 1)
+            mMainActivityPresenter.start();
     }
 
     @Override
@@ -194,7 +184,24 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
     }
 
     @Override
-    public void filterClick() {
+    public void filterClick(int filterClicked) {
+        switch (filterClicked) {
+            case R.id.rb_filter_higher:
+                mCatalogueAdapter.replaceData(ProductsCache.getInstance().retrieveList(C.SORT_HIGHER_FIRST, mCatalogueAdapter.getList()));
+                break;
+            case R.id.rb_filter_lower:
+                mCatalogueAdapter.replaceData(ProductsCache.getInstance().retrieveList(C.SORT_LOWER_FIRST, mCatalogueAdapter.getList()));
+                break;
+            default:
+                mCatalogueAdapter.replaceData(ProductsCache.getInstance().getmOriginalList());
+        }
+    }
 
+    @Override
+    public void clearFilterClicked() {
+        mCatalogueAdapter.replaceData(ProductsCache.getInstance().retrieveList(C.SORT_ORIGINAL, ProductsCache.getInstance().getmOriginalList()));
+        if (mSwSale.isChecked())
+            mSwSale.setChecked(false);
+        mRgFilterGroup.clearCheck();
     }
 }

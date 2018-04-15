@@ -25,7 +25,9 @@ public interface MainActivityContract {
 
         void onSaleClick();
 
-        void filterClick();
+        void filterClick(int filterClicked);
+
+        void clearFilterClicked();
     }
 
     interface Presenter extends BasePresenter {
