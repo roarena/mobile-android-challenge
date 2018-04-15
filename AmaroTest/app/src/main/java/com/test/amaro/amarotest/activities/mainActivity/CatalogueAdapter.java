@@ -99,4 +99,8 @@ public class CatalogueAdapter extends RecyclerView.Adapter<CatalogueAdapter.Cata
         if (mDataSet == null) return 0;
         return mDataSet.size();
     }
+
+    public List<ProductsItem> getList() {
+        return mDataSet;
+    }
 }

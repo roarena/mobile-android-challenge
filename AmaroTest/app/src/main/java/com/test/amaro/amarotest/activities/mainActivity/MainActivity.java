@@ -4,24 +4,24 @@ import android.app.ActivityOptions;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RadioGroup;
+import android.widget.Switch;
 import android.widget.TextView;
 
 import com.test.amaro.amarotest.R;
 import com.test.amaro.amarotest.activities.detailsActivity.DetailsActivity;
 import com.test.amaro.amarotest.data.model.ProductsItem;
+import com.test.amaro.amarotest.data.repository.ProductsCache;
 import com.test.amaro.amarotest.utils.C;
 
 import org.parceler.Parcels;
@@ -60,6 +60,12 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
     @BindView(R.id.iv_main_filter)
     ImageView mIvFilter;
 
+    @BindView(R.id.sw_main_sale)
+    Switch mSwSale;
+
+    @BindView(R.id.btn_main_clear_filters)
+    Button mBtnClearFilter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -87,6 +93,38 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
             @Override
             public void onClick(View view) {
                 mMainActivityPresenter.onFilterClick(mRgFilterGroup.getVisibility());
+            }
+        });
+
+        mSwSale.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                onSaleClick();
+            }
+        });
+
+        mRgFilterGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                switch (i) {
+                    case R.id.rb_filter_higher:
+                        mCatalogueAdapter.replaceData(ProductsCache.getInstance().retrieveList(C.SORT_HIGHER_FIRST, mCatalogueAdapter.getList()));
+                        break;
+                    case R.id.rb_filter_lower:
+                        mCatalogueAdapter.replaceData(ProductsCache.getInstance().retrieveList(C.SORT_LOWER_FIRST, mCatalogueAdapter.getList()));
+                        break;
+                    default:
+                        mCatalogueAdapter.replaceData(ProductsCache.getInstance().getmOriginalList());
+                }
+            }
+        });
+
+        mBtnClearFilter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mCatalogueAdapter.replaceData(ProductsCache.getInstance().retrieveList(C.SORT_ORIGINAL, ProductsCache.getInstance().getmOriginalList()));
+                if (mSwSale.isChecked())
+                    mSwSale.setChecked(false);
+                mRgFilterGroup.clearCheck();
             }
         });
     }
@@ -131,8 +169,8 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
     }
 
     @Override
-    public void showProducts(List<ProductsItem> productsItemList) {
-        mCatalogueAdapter.replaceData(productsItemList);
+    public void showProducts(List<ProductsItem> productsItemList, int sortType) {
+        mCatalogueAdapter.replaceData(ProductsCache.getInstance().retrieveList(sortType, productsItemList));
     }
 
     @Override
@@ -141,7 +179,22 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
     }
 
     @Override
-    public void toggleFilter(int status) {
+    public void toggleFilterUi(int status) {
         mRgFilterGroup.setVisibility(status);
+        mBtnClearFilter.setVisibility(status);
+    }
+
+    @Override
+    public void onSaleClick() {
+        if (mSwSale.isChecked()) {
+            mCatalogueAdapter.replaceData(ProductsCache.getInstance().retrieveList(C.SORT_SALE, mCatalogueAdapter.getList()));
+        } else {
+            mCatalogueAdapter.replaceData(ProductsCache.getInstance().getmOriginalList());
+        }
+    }
+
+    @Override
+    public void filterClick() {
+
     }
 }

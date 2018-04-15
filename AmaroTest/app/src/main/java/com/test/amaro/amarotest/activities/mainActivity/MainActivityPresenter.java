@@ -8,6 +8,7 @@ import com.test.amaro.amarotest.R;
 import com.test.amaro.amarotest.data.model.ProductsItem;
 import com.test.amaro.amarotest.data.network.CatalogueController;
 import com.test.amaro.amarotest.data.network.interfaces.UiController;
+import com.test.amaro.amarotest.data.repository.ProductsCache;
 import com.test.amaro.amarotest.utils.C;
 
 import java.util.List;
@@ -35,7 +36,8 @@ public class MainActivityPresenter implements MainActivityContract.Presenter, Ui
 
     @Override
     public void onResponseOK(List<ProductsItem> productsItemList) {
-        mMainActivityView.showProducts(productsItemList);
+        ProductsCache.getInstance().setOriginalList(productsItemList);
+        mMainActivityView.showProducts(productsItemList, C.SORT_ORIGINAL);
         mMainActivityView.changeLoadingStatus(View.GONE);
         mMainActivityView.setSubtitle(String.format(mContext.getString(R.string.products_count), String.valueOf(productsItemList.size())));
     }
@@ -61,9 +63,14 @@ public class MainActivityPresenter implements MainActivityContract.Presenter, Ui
     @Override
     public void onFilterClick(int status) {
         if (status == View.VISIBLE) {
-            mMainActivityView.toggleFilter(View.GONE);
+            mMainActivityView.toggleFilterUi(View.GONE);
         } else {
-            mMainActivityView.toggleFilter(View.VISIBLE);
+            mMainActivityView.toggleFilterUi(View.VISIBLE);
         }
+    }
+
+    @Override
+    public void filterChange(int sortType) {
+
     }
 }

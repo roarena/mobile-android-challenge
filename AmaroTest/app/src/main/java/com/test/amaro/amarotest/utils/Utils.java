@@ -1,5 +1,6 @@
 package com.test.amaro.amarotest.utils;
 
+import com.test.amaro.amarotest.data.model.ProductsItem;
 import com.test.amaro.amarotest.data.model.SizesItem;
 
 import java.util.ArrayList;

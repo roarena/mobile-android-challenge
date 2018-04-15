@@ -17,16 +17,22 @@ public interface MainActivityContract {
 
         void toggleTryAgain(int status);
 
-        void showProducts(List<ProductsItem> productsItemList);
+        void showProducts(List<ProductsItem> productsItemList, int sortType);
 
         void setSubtitle(String subtitle);
 
-        void toggleFilter(int status);
+        void toggleFilterUi(int status);
+
+        void onSaleClick();
+
+        void filterClick();
     }
 
     interface Presenter extends BasePresenter {
         void loadProducts();
 
         void onFilterClick(int status);
+
+        void filterChange(int sortType);
     }
 }

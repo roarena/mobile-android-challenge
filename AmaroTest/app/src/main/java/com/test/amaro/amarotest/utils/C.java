@@ -13,4 +13,9 @@ public class C {
 
     public static final String PRODUCT_BUNDLE = "PRODUCT_DETAILS";
 
+    public static final int SORT_ORIGINAL = 1;
+    public static final int SORT_SALE = 2;
+    public static final int SORT_HIGHER_FIRST = 3;
+    public static final int SORT_LOWER_FIRST = 4;
+
 }

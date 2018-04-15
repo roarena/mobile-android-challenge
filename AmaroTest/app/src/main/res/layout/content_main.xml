@@ -11,10 +11,10 @@
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:animateLayoutChanges="true"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="4dp"
+        android:animateLayoutChanges="true"
         android:background="@color/filter_background"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -29,15 +29,14 @@
             android:layout_marginStart="24dp"
             android:layout_marginTop="8dp"
             android:text="@string/loading"
-            app:layout_constraintBottom_toBottomOf="@+id/switch1"
+            app:layout_constraintBottom_toBottomOf="@+id/sw_main_sale"
             app:layout_constraintStart_toEndOf="@+id/iv_main_filter"
-            app:layout_constraintTop_toTopOf="@+id/switch1" />
+            app:layout_constraintTop_toTopOf="@+id/sw_main_sale" />
 
         <Switch
-            android:id="@+id/switch1"
+            android:id="@+id/sw_main_sale"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:text="On Sale"
@@ -53,23 +52,20 @@
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:foreground="?android:attr/selectableItemBackground"
-            app:layout_constraintBottom_toBottomOf="@+id/switch1"
-            app:layout_constraintStart_toEndOf="@+id/switch1"
-            app:layout_constraintTop_toTopOf="@+id/switch1"
+            app:layout_constraintStart_toEndOf="@+id/sw_main_sale"
+            app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/filter_variant" />
 
         <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
             android:id="@+id/filter_radio_group"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:orientation="vertical"
             android:visibility="gone"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/switch1">
+            app:layout_constraintTop_toBottomOf="@+id/sw_main_sale">
 
             <RadioButton
                 android:id="@+id/rb_filter_higher"
@@ -83,6 +79,20 @@
                 android:layout_height="wrap_content"
                 android:text="@string/filter_lower_to_higher" />
         </RadioGroup>
+
+        <Button
+            android:id="@+id/btn_main_clear_filters"
+            style="@style/Widget.AppCompat.Button.Borderless"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:layout_marginEnd="8dp"
+            android:text="@string/clear_filters"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/filter_radio_group" />
+
     </android.support.constraint.ConstraintLayout>
 
     <Button
@@ -129,11 +139,12 @@
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_main"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="8dp"
-        android:clipToPadding="false"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:clipToPadding="true"
+        android:paddingBottom="8dp"
         android:scrollbars="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
