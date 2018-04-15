@@ -57,4 +57,13 @@ public class MainActivityPresenter implements MainActivityContract.Presenter, Ui
         mCatalogueController = new CatalogueController();
         mCatalogueController.start(this);
     }
+
+    @Override
+    public void onFilterClick(int status) {
+        if (status == View.VISIBLE) {
+            mMainActivityView.toggleFilter(View.GONE);
+        } else {
+            mMainActivityView.toggleFilter(View.VISIBLE);
+        }
+    }
 }

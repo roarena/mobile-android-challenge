@@ -16,6 +16,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.RadioGroup;
 import android.widget.TextView;
 
 import com.test.amaro.amarotest.R;
@@ -53,6 +54,12 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
     @BindView(R.id.btn_main_try_again)
     Button mBtnTryAgain;
 
+    @BindView(R.id.filter_radio_group)
+    RadioGroup mRgFilterGroup;
+
+    @BindView(R.id.iv_main_filter)
+    ImageView mIvFilter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,6 +80,13 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
             @Override
             public void onClick(View view) {
                 mMainActivityPresenter.loadProducts();
+            }
+        });
+
+        mIvFilter.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mMainActivityPresenter.onFilterClick(mRgFilterGroup.getVisibility());
             }
         });
     }
@@ -127,9 +141,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
     }
 
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.action_bar_menu, menu);
-        return true;
+    public void toggleFilter(int status) {
+        mRgFilterGroup.setVisibility(status);
     }
 }

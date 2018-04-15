@@ -11,4 +11,6 @@
     <string name="installments_not_found">Installments not found</string>
     <string name="details_sizes">Sizes</string>
     <string name="discount_percentage">%1$s off</string>
+    <string name="filter_higher_to_lower">Filter Higher to Lower</string>
+    <string name="filter_lower_to_higher">Filter Lower to Higher</string>
 </resources>

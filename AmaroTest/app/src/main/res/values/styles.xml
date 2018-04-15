@@ -13,4 +13,8 @@
         <item name="android:windowSharedElementExitTransition">@transition/image_transition</item>
     </style>
 
+    <style name="SwitchFilterTheme" >
+        <item name="colorControlActivated">@color/discount_color</item>
+    </style>
+
 </resources>
