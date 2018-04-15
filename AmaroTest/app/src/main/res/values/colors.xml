@@ -2,9 +2,10 @@
 <resources>
     <color name="colorPrimary">#000000</color>
     <color name="colorPrimaryDark">#000000</color>
-    <color name="colorAccent">#9E9E9E</color>
+    <color name="colorAccent">#546E7A</color>
     <color name="activity_background">#BDBDBD</color>
     <color name="subtitle_color">#808080</color>
     <color name="old_price_color">#C62828</color>
     <color name="discount_color">#43A047</color>
+    <color name="filter_background">#9E9E9E</color>
 </resources>

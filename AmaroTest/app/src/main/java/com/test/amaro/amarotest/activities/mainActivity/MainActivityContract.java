@@ -20,9 +20,13 @@ public interface MainActivityContract {
         void showProducts(List<ProductsItem> productsItemList);
 
         void setSubtitle(String subtitle);
+
+        void toggleFilter(int status);
     }
 
     interface Presenter extends BasePresenter {
         void loadProducts();
+
+        void onFilterClick(int status);
     }
 }
