@@ -28,6 +28,8 @@ public interface MainActivityContract {
         void filterClick(int filterClicked);
 
         void clearFilterClicked();
+
+        void enableUiFilters();
     }
 
     interface Presenter extends BasePresenter {

@@ -204,4 +204,11 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
             mSwSale.setChecked(false);
         mRgFilterGroup.clearCheck();
     }
+
+    @Override
+    public void enableUiFilters() {
+        mSwSale.setEnabled(true);
+        mBtnClearFilter.setEnabled(true);
+        mRgFilterGroup.setEnabled(true);
+    }
 }

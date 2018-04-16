@@ -40,6 +40,7 @@ public class MainActivityPresenter implements MainActivityContract.Presenter, Ui
         mMainActivityView.showProducts(productsItemList, C.SORT_ORIGINAL);
         mMainActivityView.changeLoadingStatus(View.GONE);
         mMainActivityView.setSubtitle(String.format(mContext.getString(R.string.products_count), String.valueOf(productsItemList.size())));
+        mMainActivityView.enableUiFilters();
     }
 
     @Override

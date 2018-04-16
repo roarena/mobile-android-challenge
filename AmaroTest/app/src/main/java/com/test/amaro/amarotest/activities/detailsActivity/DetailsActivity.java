@@ -84,7 +84,11 @@ public class DetailsActivity extends AppCompatActivity implements DetailsActivit
 
     @Override
     public void setToolbarImage() {
-        Picasso.get().load(mProduct.getImage()).placeholder(R.drawable.placeholder).into(mIvProductImage);
+        if (mProduct.getImage().isEmpty()) {
+            Picasso.get().load(R.drawable.placeholder).into(mIvProductImage);
+        } else {
+            Picasso.get().load(mProduct.getImage()).placeholder(R.drawable.placeholder).into(mIvProductImage);
+        }
     }
 
     @Override
