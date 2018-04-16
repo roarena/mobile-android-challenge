@@ -39,7 +39,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:enabled="false"
-            android:text="On Sale"
+            android:text="@string/switch_on_sale"
             android:theme="@style/SwitchFilterTheme"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />

@@ -1,6 +1,5 @@
 <resources>
-    <string name="app_name">Amaro\'s \nall-time best-sellers.</string>
-    <string name="menu_filter">Filter</string>
+    <string name="app_name">Amaro\'s \n best-sellers.</string>
     <string name="products_count">%1$s products</string>
     <string name="loading">Loading...</string>
     <string name="error">Error</string>
@@ -14,4 +13,5 @@
     <string name="filter_higher_to_lower">Filter Higher to Lower</string>
     <string name="filter_lower_to_higher">Filter Lower to Higher</string>
     <string name="clear_filters">Clear</string>
+    <string name="switch_on_sale">On Sale</string>
 </resources>

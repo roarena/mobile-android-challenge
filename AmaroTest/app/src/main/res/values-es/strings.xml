@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Powered by Google Translate and my Portunhol skills xD -->
+    <string name="products_count">%1$s productos</string>
+    <string name="loading">Cargando...</string>
+    <string name="error">Error</string>
+    <string name="error_loading">Ops! =(\nNo se pudo recuperar la información de los productos.</string>
+    <string name="btn_try_again">Inténtalo de nuevo</string>
+    <string name="name_not_found">Nombre no encontrado</string>
+    <string name="price_not_found">Precio no encontrado</string>
+    <string name="installments_not_found">Cuotas no encontradas</string>
+    <string name="details_sizes">Tamaños</string>
+    <string name="filter_higher_to_lower">Filtrar de mayor a menor</string>
+    <string name="filter_lower_to_higher">Filtrar de menor a mayor</string>
+    <string name="clear_filters">Limpiar</string>
+    <string name="switch_on_sale">En venta</string>
+</resources>
