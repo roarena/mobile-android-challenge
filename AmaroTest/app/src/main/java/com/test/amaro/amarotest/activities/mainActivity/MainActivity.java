@@ -150,6 +150,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
 
     @Override
     public void showProducts(List<ProductsItem> productsItemList, int sortType) {
+        mRecyclerView.setVisibility(View.VISIBLE);
         mCatalogueAdapter.replaceData(ProductsCache.getInstance().
                 retrieveList(sortType, productsItemList));
     }
