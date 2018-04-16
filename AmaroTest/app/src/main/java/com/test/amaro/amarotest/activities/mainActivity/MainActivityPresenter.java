@@ -21,11 +21,9 @@ public class MainActivityPresenter implements MainActivityContract.Presenter, Ui
 
     private CatalogueController mCatalogueController;
     private MainActivityContract.View mMainActivityView;
-    private Context mContext;
 
-    MainActivityPresenter(Context context, MainActivityContract.View mainActivityView) {
+    MainActivityPresenter(MainActivityContract.View mainActivityView) {
         this.mMainActivityView = mainActivityView;
-        this.mContext = context;
         mainActivityView.setPresenter(this);
     }
 
@@ -39,24 +37,20 @@ public class MainActivityPresenter implements MainActivityContract.Presenter, Ui
         ProductsCache.getInstance().setOriginalList(productsItemList);
         mMainActivityView.showProducts(productsItemList, C.SORT_ORIGINAL);
         mMainActivityView.changeLoadingStatus(View.GONE);
-        mMainActivityView.setSubtitle(String.format(mContext.getString(R.string.products_count), String.valueOf(productsItemList.size())));
         mMainActivityView.enableUiFilters();
     }
 
     @Override
     public void onResponseFail(Throwable t) {
         Log.e(C.LOG_TAG, t.getMessage());
-
         mMainActivityView.toggleTryAgain(View.VISIBLE);
         mMainActivityView.changeLoadingStatus(View.GONE);
-        mMainActivityView.setSubtitle(mContext.getString(R.string.error));
     }
 
     @Override
     public void loadProducts() {
         mMainActivityView.changeLoadingStatus(View.VISIBLE);
         mMainActivityView.toggleTryAgain(View.GONE);
-        mMainActivityView.setSubtitle(mContext.getString(R.string.loading));
         mCatalogueController = new CatalogueController();
         mCatalogueController.start(this);
     }

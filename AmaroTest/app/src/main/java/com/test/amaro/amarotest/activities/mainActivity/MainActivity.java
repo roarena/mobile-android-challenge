@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -41,9 +42,6 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
 
     @BindView(R.id.rv_main)
     RecyclerView mRecyclerView;
-
-    @BindView(R.id.tv_products_count)
-    TextView mTvProductsCount;
 
     @BindView(R.id.pb_main)
     ProgressBar mPbLoading;
@@ -80,7 +78,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
         mRecyclerView.setLayoutManager(mLayoutManager);
         mRecyclerView.setAdapter(mCatalogueAdapter);
 
-        mMainActivityPresenter = new MainActivityPresenter(getBaseContext(), this);
+        mMainActivityPresenter = new MainActivityPresenter(this);
 
         mBtnTryAgain.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -164,11 +162,6 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
     }
 
     @Override
-    public void setSubtitle(String subtitle) {
-        mTvProductsCount.setText(subtitle);
-    }
-
-    @Override
     public void toggleFilterUi(int status) {
         mRgFilterGroup.setVisibility(status);
         mBtnClearFilter.setVisibility(status);
@@ -209,6 +202,13 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
     public void enableUiFilters() {
         mSwSale.setEnabled(true);
         mBtnClearFilter.setEnabled(true);
+
+        /* RadioButtonGroup cannot be Enable/Disable and do the same with it's childrens
+        * Therefore we need to loop trough it's childs and enable one by one. =(
+        * */
         mRgFilterGroup.setEnabled(true);
+        for (int i = 0; i < mRgFilterGroup.getChildCount(); i++) {
+            mRgFilterGroup.getChildAt(i).setEnabled(true);
+        }
     }
 }

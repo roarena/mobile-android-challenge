@@ -19,8 +19,6 @@ public interface MainActivityContract {
 
         void showProducts(List<ProductsItem> productsItemList, int sortType);
 
-        void setSubtitle(String subtitle);
-
         void toggleFilterUi(int status);
 
         void onSaleClick();
