@@ -11,6 +11,5 @@ import retrofit2.http.GET;
 
 public interface NetworkResponse {
     @GET("v2/59b6a65a0f0000e90471257d/")
-    //@GET("things/KzmM.json")
     Call<CatalogueResponse> loadCatalogue();
 }

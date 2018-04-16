@@ -1,10 +1,8 @@
 package com.test.amaro.amarotest.activities.mainActivity;
 
-import android.content.Context;
 import android.util.Log;
 import android.view.View;
 
-import com.test.amaro.amarotest.R;
 import com.test.amaro.amarotest.data.model.ProductsItem;
 import com.test.amaro.amarotest.data.network.CatalogueController;
 import com.test.amaro.amarotest.data.network.interfaces.UiController;

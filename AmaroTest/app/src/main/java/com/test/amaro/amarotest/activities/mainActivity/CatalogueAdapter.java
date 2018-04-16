@@ -44,7 +44,8 @@ public class CatalogueAdapter extends RecyclerView.Adapter<CatalogueAdapter.Cata
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    mOnClickListener.onListItemClick(mDataSet.get(getAdapterPosition()), ivProductPicture);
+                    mOnClickListener.onListItemClick(
+                            mDataSet.get(getAdapterPosition()), ivProductPicture);
                 }
             });
         }
@@ -67,7 +68,8 @@ public class CatalogueAdapter extends RecyclerView.Adapter<CatalogueAdapter.Cata
     }
 
     @Override
-    public CatalogueAdapter.CatalogueAdapterViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public CatalogueAdapter.CatalogueAdapterViewHolder onCreateViewHolder(ViewGroup parent,
+                                                                          int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         View view = inflater.inflate(R.layout.main_card, parent, false);
 
@@ -77,21 +79,30 @@ public class CatalogueAdapter extends RecyclerView.Adapter<CatalogueAdapter.Cata
     @Override
     public void onBindViewHolder(CatalogueAdapterViewHolder holder, int position) {
         if (!mDataSet.get(position).getImage().isEmpty()) {
-            Picasso.get().load(mDataSet.get(position).getImage()).placeholder(R.drawable.placeholder).into(holder.ivProductPicture);
+            Picasso.get().load(mDataSet.get(position).getImage())
+                    .placeholder(R.drawable.placeholder).
+                    into(holder.ivProductPicture);
         } else {
-            Picasso.get().load(R.drawable.placeholder).into(holder.ivProductPicture);
+            Picasso.get().load(R.drawable.placeholder).
+                    into(holder.ivProductPicture);
         }
 
-        if (mDataSet.get(position).isOn_sale() && !mDataSet.get(position).getDiscount_percentage().isEmpty()) {
+        if (mDataSet.get(position).isOn_sale() &&
+                !mDataSet.get(position).getDiscount_percentage().isEmpty()) {
             holder.tvProductDiscount.setVisibility(View.VISIBLE);
-            holder.tvProductDiscount.setText(mContext.getString(R.string.discount_percentage, mDataSet.get(position).getDiscount_percentage()));
+            holder.tvProductDiscount.setText(
+                    mContext.getString(R.string.discount_percentage,
+                            mDataSet.get(position).getDiscount_percentage()));
         } else {
             holder.tvProductDiscount.setVisibility(View.GONE);
         }
 
-        holder.tvProductName.setText(mDataSet.get(position).getName().isEmpty() ? mContext.getString(R.string.name_not_found) : mDataSet.get(position).getName());
-        holder.tvProductPrice.setText(mDataSet.get(position).getActual_price().isEmpty() ? mContext.getString(R.string.price_not_found) : mDataSet.get(position).getActual_price());
-        holder.tvProductInstallments.setText(mDataSet.get(position).getInstallments().isEmpty() ? mContext.getString(R.string.installments_not_found) : mDataSet.get(position).getInstallments());
+        holder.tvProductName.setText(mDataSet.get(position).getName().isEmpty() ?
+                mContext.getString(R.string.name_not_found) : mDataSet.get(position).getName());
+        holder.tvProductPrice.setText(mDataSet.get(position).getActual_price().isEmpty() ?
+                mContext.getString(R.string.price_not_found) : mDataSet.get(position).getActual_price());
+        holder.tvProductInstallments.setText(mDataSet.get(position).getInstallments().isEmpty() ?
+                mContext.getString(R.string.installments_not_found) : mDataSet.get(position).getInstallments());
     }
 
     @Override

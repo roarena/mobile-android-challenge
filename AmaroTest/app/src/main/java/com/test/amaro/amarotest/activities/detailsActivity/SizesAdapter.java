@@ -55,7 +55,8 @@ public class SizesAdapter extends RecyclerView.Adapter<SizesAdapter.SizesAdapter
 
     @Override
     public void onBindViewHolder(SizesAdapterViewHolder holder, int position) {
-        holder.tvProductSize.setText(mDataSet.get(position).getSize().isEmpty() ? "-" : mDataSet.get(position).getSize());
+        holder.tvProductSize.setText(mDataSet.get(position).getSize().isEmpty() ?
+                mContext.getString(R.string.size_not_found) : mDataSet.get(position).getSize());
     }
 
     @Override

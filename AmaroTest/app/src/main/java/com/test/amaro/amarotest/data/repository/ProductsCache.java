@@ -58,9 +58,13 @@ public class ProductsCache {
         Collections.sort(productsItems, new Comparator<ProductsItem>() {
             public int compare(ProductsItem c1, ProductsItem c2) {
                 if (sortType == C.SORT_HIGHER_FIRST) {
-                    return Double.compare(getPriceFromJson(c2.getActual_price()), getPriceFromJson(c1.getActual_price()));
+                    return Double.compare(
+                            getPriceFromJson(c2.getActual_price()),
+                            getPriceFromJson(c1.getActual_price()));
                 } else {
-                    return Double.compare(getPriceFromJson(c1.getActual_price()), getPriceFromJson(c2.getActual_price()));
+                    return Double.compare(
+                            getPriceFromJson(c1.getActual_price()),
+                            getPriceFromJson(c2.getActual_price()));
                 }
             }
         });

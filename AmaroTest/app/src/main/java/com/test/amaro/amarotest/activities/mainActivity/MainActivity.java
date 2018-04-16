@@ -14,7 +14,6 @@ import android.widget.Button;
 import android.widget.CompoundButton;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Switch;
 import android.widget.TextView;
@@ -39,30 +38,22 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
 
     @BindView(R.id.toolbar)
     Toolbar mToolbar;
-
     @BindView(R.id.rv_main)
     RecyclerView mRecyclerView;
-
     @BindView(R.id.pb_main)
     ProgressBar mPbLoading;
-
     @BindView(R.id.tv_main_try_again)
     TextView mTvTryAgain;
-
     @BindView(R.id.btn_main_try_again)
     Button mBtnTryAgain;
-
-    @BindView(R.id.filter_radio_group)
-    RadioGroup mRgFilterGroup;
-
-    @BindView(R.id.iv_main_filter)
-    ImageView mIvFilter;
-
-    @BindView(R.id.sw_main_sale)
-    Switch mSwSale;
-
     @BindView(R.id.btn_main_clear_filters)
     Button mBtnClearFilter;
+    @BindView(R.id.iv_main_filter)
+    ImageView mIvFilter;
+    @BindView(R.id.filter_radio_group)
+    RadioGroup mRgFilterGroup;
+    @BindView(R.id.sw_main_sale)
+    Switch mSwSale;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -122,7 +113,8 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
             Intent intent = new Intent(getApplicationContext(), DetailsActivity.class);
 
             ActivityOptions options = ActivityOptions
-                    .makeSceneTransitionAnimation(MainActivity.this, cardImage, "productImage");
+                    .makeSceneTransitionAnimation(MainActivity.this, cardImage,
+                            "productImage");
 
             intent.putExtra(C.PRODUCT_BUNDLE, Parcels.wrap(product));
             startActivity(intent, options.toBundle());
@@ -158,7 +150,8 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
 
     @Override
     public void showProducts(List<ProductsItem> productsItemList, int sortType) {
-        mCatalogueAdapter.replaceData(ProductsCache.getInstance().retrieveList(sortType, productsItemList));
+        mCatalogueAdapter.replaceData(ProductsCache.getInstance().
+                retrieveList(sortType, productsItemList));
     }
 
     @Override
@@ -170,7 +163,8 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
     @Override
     public void onSaleClick() {
         if (mSwSale.isChecked()) {
-            mCatalogueAdapter.replaceData(ProductsCache.getInstance().retrieveList(C.SORT_SALE, mCatalogueAdapter.getList()));
+            mCatalogueAdapter.replaceData(ProductsCache.getInstance().
+                    retrieveList(C.SORT_SALE, mCatalogueAdapter.getList()));
         } else {
             mCatalogueAdapter.replaceData(ProductsCache.getInstance().getmOriginalList());
         }
@@ -180,10 +174,12 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
     public void filterClick(int filterClicked) {
         switch (filterClicked) {
             case R.id.rb_filter_higher:
-                mCatalogueAdapter.replaceData(ProductsCache.getInstance().retrieveList(C.SORT_HIGHER_FIRST, mCatalogueAdapter.getList()));
+                mCatalogueAdapter.replaceData(ProductsCache.getInstance().
+                        retrieveList(C.SORT_HIGHER_FIRST, mCatalogueAdapter.getList()));
                 break;
             case R.id.rb_filter_lower:
-                mCatalogueAdapter.replaceData(ProductsCache.getInstance().retrieveList(C.SORT_LOWER_FIRST, mCatalogueAdapter.getList()));
+                mCatalogueAdapter.replaceData(ProductsCache.getInstance().
+                        retrieveList(C.SORT_LOWER_FIRST, mCatalogueAdapter.getList()));
                 break;
             default:
                 mCatalogueAdapter.replaceData(ProductsCache.getInstance().getmOriginalList());
@@ -192,7 +188,8 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
 
     @Override
     public void clearFilterClicked() {
-        mCatalogueAdapter.replaceData(ProductsCache.getInstance().retrieveList(C.SORT_ORIGINAL, ProductsCache.getInstance().getmOriginalList()));
+        mCatalogueAdapter.replaceData(ProductsCache.getInstance().
+                retrieveList(C.SORT_ORIGINAL, ProductsCache.getInstance().getmOriginalList()));
         if (mSwSale.isChecked())
             mSwSale.setChecked(false);
         mRgFilterGroup.clearCheck();

@@ -2,7 +2,6 @@ package com.test.amaro.amarotest.activities.mainActivity;
 
 import com.test.amaro.amarotest.activities.BasePresenter;
 import com.test.amaro.amarotest.activities.BaseView;
-import com.test.amaro.amarotest.data.model.CatalogueResponse;
 import com.test.amaro.amarotest.data.model.ProductsItem;
 
 import java.util.List;

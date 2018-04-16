@@ -53,14 +53,15 @@ public class DetailsActivity extends AppCompatActivity implements DetailsActivit
         setContentView(R.layout.activity_details);
         ButterKnife.bind(this);
 
-        mDetailsActivityPresenter = new DetailsActivityPresenter(getBaseContext(), this);
+        mDetailsActivityPresenter = new DetailsActivityPresenter(this);
 
         if (getIntent().hasExtra(C.PRODUCT_BUNDLE)) {
             mProduct = Parcels.unwrap(getIntent().getParcelableExtra(C.PRODUCT_BUNDLE));
         }
 
-        mSizesAdapter = new SizesAdapter(getBaseContext());
-        mLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        mSizesAdapter = new SizesAdapter(getApplicationContext());
+        mLayoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL,
+                false);
 
         rvSizes.setLayoutManager(mLayoutManager);
         rvSizes.setAdapter(mSizesAdapter);
@@ -85,17 +86,23 @@ public class DetailsActivity extends AppCompatActivity implements DetailsActivit
     @Override
     public void setToolbarImage() {
         if (mProduct.getImage().isEmpty()) {
-            Picasso.get().load(R.drawable.placeholder).into(mIvProductImage);
+            Picasso.get().load(R.drawable.placeholder).
+                    into(mIvProductImage);
         } else {
-            Picasso.get().load(mProduct.getImage()).placeholder(R.drawable.placeholder).into(mIvProductImage);
+            Picasso.get().load(mProduct.getImage())
+                    .placeholder(R.drawable.placeholder)
+                    .into(mIvProductImage);
         }
     }
 
     @Override
     public void setProductsDetails() {
-        mTvProductName.setText(mProduct.getName().isEmpty() ? getString(R.string.name_not_found) : mProduct.getName());
-        mTvProductPrice.setText(mProduct.getActual_price().isEmpty() ? getString(R.string.price_not_found) : mProduct.getActual_price());
-        mTvProductInstallments.setText(mProduct.getInstallments().isEmpty() ? getString(R.string.installments_not_found) : mProduct.getInstallments());
+        mTvProductName.setText(mProduct.getName().isEmpty() ?
+                getString(R.string.name_not_found) : mProduct.getName());
+        mTvProductPrice.setText(mProduct.getActual_price().isEmpty() ?
+                getString(R.string.price_not_found) : mProduct.getActual_price());
+        mTvProductInstallments.setText(mProduct.getInstallments().isEmpty() ?
+                getString(R.string.installments_not_found) : mProduct.getInstallments());
 
         if (mProduct.isOn_sale()) {
             mClOldPriceLayout.setVisibility(View.VISIBLE);
