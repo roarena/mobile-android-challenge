@@ -1,5 +1,6 @@
 package com.test.amaro.amarotest.activities.mainActivity;
 
+
 import com.test.amaro.amarotest.activities.BasePresenter;
 import com.test.amaro.amarotest.activities.BaseView;
 import com.test.amaro.amarotest.data.model.ProductsItem;
@@ -18,13 +19,15 @@ public interface MainActivityContract {
 
         void showProducts(List<ProductsItem> productsItemList, int sortType);
 
-        void toggleFilterUi(int status);
+        void showProductDetail(ProductsItem productsItem, android.view.View cardImage);
 
-        void onSaleClick();
+        void showFilteredProducts(List<ProductsItem> productsItems);
+
+        void toggleFilterUi(int status);
 
         void filterClick(int filterClicked);
 
-        void clearFilterClicked();
+        void updateFiltersUi();
 
         void enableUiFilters();
     }
@@ -32,8 +35,14 @@ public interface MainActivityContract {
     interface Presenter extends BasePresenter {
         void loadProducts();
 
-        void onFilterClick(int status);
+        void onListClick(ProductsItem productsItem, android.view.View cardImage);
 
-        void filterChange(int sortType);
+        void onShowFiltersClick(int status);
+
+        void onSaleFilterClick(boolean status, List<ProductsItem> productsItems);
+
+        void onFilterChangeClick(int sortType, List<ProductsItem> productsItems);
+
+        void onClearFilterClicked();
     }
 }

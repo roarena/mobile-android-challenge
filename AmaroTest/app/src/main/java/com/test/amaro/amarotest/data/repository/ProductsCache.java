@@ -32,7 +32,7 @@ public class ProductsCache {
         this.mOriginalList = mOriginalList;
     }
 
-    public List<ProductsItem> getmOriginalList() {
+    public List<ProductsItem> getOriginalList() {
         filterListByPrice(mOriginalList, lastSortType);
         return mOriginalList;
     }

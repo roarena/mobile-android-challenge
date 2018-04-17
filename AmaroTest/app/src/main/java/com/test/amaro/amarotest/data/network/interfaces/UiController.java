@@ -1,6 +1,5 @@
 package com.test.amaro.amarotest.data.network.interfaces;
 
-import com.test.amaro.amarotest.data.model.CatalogueResponse;
 import com.test.amaro.amarotest.data.model.ProductsItem;
 
 import java.util.List;

@@ -8,7 +8,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CompoundButton;
@@ -81,13 +80,14 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
         mIvFilter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mMainActivityPresenter.onFilterClick(mRgFilterGroup.getVisibility());
+                mMainActivityPresenter.onShowFiltersClick(mRgFilterGroup.getVisibility());
             }
         });
 
         mSwSale.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
-                onSaleClick();
+                mMainActivityPresenter.onSaleFilterClick(mSwSale.isChecked(),
+                        mCatalogueAdapter.getList());
             }
         });
 
@@ -101,7 +101,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
         mBtnClearFilter.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                clearFilterClicked();
+                mMainActivityPresenter.onClearFilterClicked();
             }
         });
     }
@@ -109,15 +109,7 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
     private CatalogueAdapter.ListItemClickListener listItemClickListener = new CatalogueAdapter.ListItemClickListener() {
         @Override
         public void onListItemClick(ProductsItem product, View cardImage) {
-            Log.d(C.LOG_TAG, product.getName());
-            Intent intent = new Intent(getApplicationContext(), DetailsActivity.class);
-
-            ActivityOptions options = ActivityOptions
-                    .makeSceneTransitionAnimation(MainActivity.this, cardImage,
-                            "productImage");
-
-            intent.putExtra(C.PRODUCT_BUNDLE, Parcels.wrap(product));
-            startActivity(intent, options.toBundle());
+            mMainActivityPresenter.onListClick(product, cardImage);
         }
     };
 
@@ -156,41 +148,35 @@ public class MainActivity extends AppCompatActivity implements MainActivityContr
     }
 
     @Override
+    public void showProductDetail(ProductsItem productsItem, View cardImage) {
+        Intent intent = new Intent(getApplicationContext(), DetailsActivity.class);
+
+        ActivityOptions options = ActivityOptions
+                .makeSceneTransitionAnimation(MainActivity.this, cardImage,
+                        "productImage");
+
+        intent.putExtra(C.PRODUCT_BUNDLE, Parcels.wrap(productsItem));
+        startActivity(intent, options.toBundle());
+    }
+
+    @Override
+    public void showFilteredProducts(List<ProductsItem> productsItems) {
+        mCatalogueAdapter.replaceData(productsItems);
+    }
+
+    @Override
     public void toggleFilterUi(int status) {
         mRgFilterGroup.setVisibility(status);
         mBtnClearFilter.setVisibility(status);
     }
 
     @Override
-    public void onSaleClick() {
-        if (mSwSale.isChecked()) {
-            mCatalogueAdapter.replaceData(ProductsCache.getInstance().
-                    retrieveList(C.SORT_SALE, mCatalogueAdapter.getList()));
-        } else {
-            mCatalogueAdapter.replaceData(ProductsCache.getInstance().getmOriginalList());
-        }
-    }
-
-    @Override
     public void filterClick(int filterClicked) {
-        switch (filterClicked) {
-            case R.id.rb_filter_higher:
-                mCatalogueAdapter.replaceData(ProductsCache.getInstance().
-                        retrieveList(C.SORT_HIGHER_FIRST, mCatalogueAdapter.getList()));
-                break;
-            case R.id.rb_filter_lower:
-                mCatalogueAdapter.replaceData(ProductsCache.getInstance().
-                        retrieveList(C.SORT_LOWER_FIRST, mCatalogueAdapter.getList()));
-                break;
-            default:
-                mCatalogueAdapter.replaceData(ProductsCache.getInstance().getmOriginalList());
-        }
+        mMainActivityPresenter.onFilterChangeClick(filterClicked, mCatalogueAdapter.getList());
     }
 
     @Override
-    public void clearFilterClicked() {
-        mCatalogueAdapter.replaceData(ProductsCache.getInstance().
-                retrieveList(C.SORT_ORIGINAL, ProductsCache.getInstance().getmOriginalList()));
+    public void updateFiltersUi() {
         if (mSwSale.isChecked())
             mSwSale.setChecked(false);
         mRgFilterGroup.clearCheck();

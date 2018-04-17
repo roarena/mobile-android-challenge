@@ -3,6 +3,7 @@ package com.test.amaro.amarotest.activities.mainActivity;
 import android.util.Log;
 import android.view.View;
 
+import com.test.amaro.amarotest.R;
 import com.test.amaro.amarotest.data.model.ProductsItem;
 import com.test.amaro.amarotest.data.network.CatalogueController;
 import com.test.amaro.amarotest.data.network.interfaces.UiController;
@@ -54,7 +55,12 @@ public class MainActivityPresenter implements MainActivityContract.Presenter, Ui
     }
 
     @Override
-    public void onFilterClick(int status) {
+    public void onListClick(ProductsItem productsItem, View cardImage) {
+        mMainActivityView.showProductDetail(productsItem, cardImage);
+    }
+
+    @Override
+    public void onShowFiltersClick(int status) {
         if (status == View.VISIBLE) {
             mMainActivityView.toggleFilterUi(View.GONE);
         } else {
@@ -63,7 +69,37 @@ public class MainActivityPresenter implements MainActivityContract.Presenter, Ui
     }
 
     @Override
-    public void filterChange(int sortType) {
+    public void onSaleFilterClick(boolean status, List<ProductsItem> productsItems) {
+        if (status) {
+            mMainActivityView.showFilteredProducts(ProductsCache.getInstance().
+                    retrieveList(C.SORT_SALE, productsItems));
+        } else {
+            mMainActivityView.showFilteredProducts(
+                    ProductsCache.getInstance().getOriginalList());
+        }
+    }
 
+    @Override
+    public void onFilterChangeClick(int sortType, List<ProductsItem> productsItems) {
+        switch (sortType) {
+            case R.id.rb_filter_higher:
+                mMainActivityView.showFilteredProducts(ProductsCache.getInstance().
+                        retrieveList(C.SORT_HIGHER_FIRST, productsItems));
+                break;
+            case R.id.rb_filter_lower:
+                mMainActivityView.showFilteredProducts(ProductsCache.getInstance().
+                        retrieveList(C.SORT_LOWER_FIRST, productsItems));
+                break;
+            default:
+                mMainActivityView.showFilteredProducts(
+                        ProductsCache.getInstance().getOriginalList());
+        }
+    }
+
+    @Override
+    public void onClearFilterClicked() {
+        mMainActivityView.showFilteredProducts(ProductsCache.getInstance().
+                retrieveList(C.SORT_ORIGINAL, ProductsCache.getInstance().getOriginalList()));
+        mMainActivityView.updateFiltersUi();
     }
 }
