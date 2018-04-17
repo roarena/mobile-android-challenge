@@ -1,4 +1,4 @@
-package com.test.amaro.amarotest;
+package com.test.amaro.amarotest.helpers;
 
 /**
  * Created by rodri on 16/04/2018.

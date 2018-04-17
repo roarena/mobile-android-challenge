@@ -11,6 +11,9 @@ import android.test.InstrumentationTestCase;
 import com.squareup.okhttp.mockwebserver.MockResponse;
 import com.squareup.okhttp.mockwebserver.MockWebServer;
 import com.test.amaro.amarotest.activities.mainActivity.MainActivity;
+import com.test.amaro.amarotest.helpers.Constants;
+import com.test.amaro.amarotest.helpers.RecyclerViewMatcher;
+import com.test.amaro.amarotest.helpers.RestHelper;
 import com.test.amaro.amarotest.utils.C;
 
 import org.junit.After;

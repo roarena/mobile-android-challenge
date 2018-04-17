@@ -1,4 +1,4 @@
-package com.test.amaro.amarotest;
+package com.test.amaro.amarotest.helpers;
 
 import android.content.res.Resources;
 import android.support.v7.widget.RecyclerView;
