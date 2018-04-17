@@ -1,8 +1,11 @@
+
 # AMARO Android Challenge
-In this exercise, the proposed challenge is to create a catalogue app that displays [AMARO](https://amaro.com/)'s all-time *best-sellers*.
+In this exercise, the proposed challenge is to create a catalogue app that displays [AMARO](https://amaro.com/)'s all-time *best-sellers*.
+
+![Amaro Test App by Rodrigo Câmara](https://im5.ezgif.com/tmp/ezgif-5-7d57182b5d.gif)
 
 ## A few guidelines
-* The app must read product data from this mocked [products resource API](http://www.mocky.io/v2/59b6a65a0f0000e90471257d).
+* The app must read product data from this mocked [products resource API](http://www.mocky.io/v2/59b6a65a0f0000e90471257d).
 * All products from the resource must be displayed.
 * To initiate the test, just fork this repository, and once you're done, please use the words *DONE!* in your last commit.
 * You may use any third-party libraries as you see fit.
@@ -20,7 +23,7 @@ In this exercise, the proposed challenge is to create a catalogue app that displ
     - Name
     - Price
     - Promotion status (on sale or not)
-    - Promotional price (if available)
+    - Promotional price (if available)
     - Available sizes
 
 ## Additional requirements
@@ -35,22 +38,22 @@ In this exercise, the proposed challenge is to create a catalogue app that displ
 
 ## Examination criteria
 * The code will be examined according to following main criterias: semantics, structure and legibility.
-* Organization and comments of the *git* commit history will be considered.
+* Organization and comments of the *git* commit history will be considered.
 * We're looking for an experienced Java developer who knows how to use Google's guidelines and is able to write clean and working software, so take this chance to show us what you're made of.
 
 -------------------------------
 
 # Desafio Android AMARO
-O objetivo deste desafio é construir um app de catálogo para alguns dos *best-sellers* da história da [AMARO](https://amaro.com/).
+O objetivo deste desafio é construir um app de catálogo para alguns dos *best-sellers* da história da [AMARO](https://amaro.com/).
 
 ## Algumas regras
-* O app deve consumir o serviço [products service](http://www.mocky.io/v2/59b6a65a0f0000e90471257d) como uma API Rest.
-* Todos os produtos carregados do serviço devem ser exibidos no catálogo.
+* O app deve consumir o serviço [products service](http://www.mocky.io/v2/59b6a65a0f0000e90471257d) como uma API Rest.
+* Todos os produtos carregados do serviço devem ser exibidos no catálogo.
 * Para iniciar o teste faça o fork do repositório, e para finalizar nomeie o último commit com  *DONE!*.
 * É permitido utilizar quaisquer bibliotecas que você esteja familiarizado.
-* Utilize Java como linguagem principal.
-* Se você estiver com dúvidas, busque por referências no Google, ou pergunte para amigos.
-Mas não peça para eles resolverem o desafio para você.
+* Utilize Java como linguagem principal.
+* Se você estiver com dúvidas, busque por referências no Google, ou pergunte para amigos.
+Mas não peça para eles resolverem o desafio para você.
 
 ## Requisitos básicos
 1. Exibir uma lista de produtos em forma de catálogo vertical com as seguintes informações:
@@ -58,25 +61,25 @@ Mas não peça para eles resolverem o desafio para você.
     - Nome
     - Preço 
 2. Cada produto do catálogo deve ser clicável. 
-3. Quando o produto for clicado, o usuário deve ser direcionado para uma área, onde serão exibidos os detalhes do produto, com as seguintes informações:
+3. Quando o produto for clicado, o usuário deve ser direcionado para uma área, onde serão exibidos os detalhes do produto, com as seguintes informações:
     - Imagem
     - Nome
     - Preço
-    - Status de promoção
-    - Preço promocional (se houver)
-    - Tamanhos disponíveis
+    - Status de promoção
+    - Preço promocional (se houver)
+    - Tamanhos disponíveis
 
 ## Requisitos adicionais
-* Alguns produtos não tem sua grade completa (todos os tamanhos disponíveis). Mostre somente os tamanhos em estoque.
-* Adicione um filtro para mostrar só os produtos em promoção (`on_sale`).
+* Alguns produtos não tem sua grade completa (todos os tamanhos disponíveis). Mostre somente os tamanhos em estoque.
+* Adicione um filtro para mostrar só os produtos em promoção (`on_sale`).
 * Adicione uma funcionalidade de ordenção que permite ordenar a lista por preço (menor para maior).
 * Seja criativo e perfeccionista com o layout.
 * Utilize os guidelines de [material design](https://getmdl.io/components/index.html).
  
 ## Ponto extra
-* Achou o desafio até aqui fácil? Todos gostamos de código limpo, facilmente compreensível e testável, certo? Então esse é um grande diferencial. Refatore seu código se necessário, e adicione testes unitários onde possível.
+* Achou o desafio até aqui fácil? Todos gostamos de código limpo, facilmente compreensível e testável, certo? Então esse é um grande diferencial. Refatore seu código se necessário, e adicione testes unitários onde possível.
 
 ## Critérios de avaliação
-* O código será avaliado considerando: semântica, estruturação e legibilidade.
-* O histórico do *git* também será avaliado.
-* Estamos buscando um desenvolvedor Android que saiba utilizar as guidelines, padrões da Google e ao mesmo tempo, possua um conhecimento sólido em Java-Android. Por isso, aproveite a oportunidade para nos mostrar que você tem conhecimento nessas áreas.
+* O código será avaliado considerando: semântica, estruturação e legibilidade.
+* O histórico do *git* também será avaliado.
+* Estamos buscando um desenvolvedor Android que saiba utilizar as guidelines, padrões da Google e ao mesmo tempo, possua um conhecimento sólido em Java-Android. Por isso, aproveite a oportunidade para nos mostrar que você tem conhecimento nessas áreas.
