@@ -10,4 +10,9 @@
     <string name="filter_lower_to_higher">Filtrar preço do Menor para Maior</string>
     <string name="clear_filters">Limpar</string>
     <string name="switch_on_sale">Em Promoção</string>
+
+    <!-- Accessibility Strings-->
+    <string name="cd_product_image">Imagem mostrando uma foto do produto.</string>
+    <string name="cd_filter_image">Imagem que mostra um icone clicável que mostra filtros para os produtos.</string>
+
 </resources>

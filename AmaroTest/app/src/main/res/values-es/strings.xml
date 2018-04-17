@@ -11,4 +11,8 @@
     <string name="filter_lower_to_higher">Filtrar de menor a mayor</string>
     <string name="clear_filters">Limpiar</string>
     <string name="switch_on_sale">En venta</string>
+
+    <!-- Accessibility Strings-->
+    <string name="cd_product_image">Imagen que muestra la foto del producto.</string>
+    <string name="cd_filter_image">Imagen que muestra un ícono en el que se puede hacer clic que muestra los filtros del producto.</string>
 </resources>
