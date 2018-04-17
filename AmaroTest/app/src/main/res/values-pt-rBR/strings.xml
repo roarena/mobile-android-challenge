@@ -1,8 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="products_count">%1$s produtos</string>
-    <string name="loading">Carregando...</string>
-    <string name="error">Erro</string>
     <string name="error_loading">Ops! =( \nNão consegui obter as informações dos produtos.</string>
     <string name="btn_try_again">Tentar novamente</string>
     <string name="name_not_found">Nome não encontrado</string>

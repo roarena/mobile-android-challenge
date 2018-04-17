@@ -20,7 +20,6 @@
             android:layout_height="match_parent"
             android:background="@android:color/white"
             app:layout_scrollFlags="scroll|enterAlways"
-            app:title=""
             app:titleEnabled="false">
 
             <android.support.v7.widget.Toolbar
@@ -41,12 +40,13 @@
 
                 <ImageView
                     android:id="@+id/iv_details_product_image"
-                    android:layout_width="300dp"
-                    android:layout_height="450dp"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginStart="8dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_width="@dimen/detail_image_width"
+                    android:layout_height="@dimen/detail_image_height"
+                    android:layout_marginBottom="@dimen/margin_default"
+                    android:layout_marginEnd="@dimen/margin_default"
+                    android:contentDescription="@string/cd_product_image"
+                    android:layout_marginStart="@dimen/margin_default"
+                    android:layout_marginTop="@dimen/margin_default"
                     android:scaleType="fitCenter"
                     android:transitionName="productImage"
                     app:layout_constraintBottom_toBottomOf="parent"

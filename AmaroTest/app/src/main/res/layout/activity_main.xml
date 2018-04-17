@@ -12,7 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:background="@android:color/white"
-        android:elevation="5dp"
+        android:elevation="@dimen/margin_default"
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
         <android.support.design.widget.CollapsingToolbarLayout
@@ -44,10 +44,10 @@
                     android:id="@+id/textView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="16dp"
-                    android:layout_marginEnd="16dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="@dimen/margin_larger_default"
+                    android:layout_marginEnd="@dimen/margin_larger_default"
+                    android:layout_marginStart="@dimen/margin_larger_default"
+                    android:layout_marginTop="@dimen/margin_larger_default"
                     android:gravity="center_vertical"
                     android:text="@string/app_name"
                     android:textAlignment="center"

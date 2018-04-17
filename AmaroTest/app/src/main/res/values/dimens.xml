@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="margin_default">8dp</dimen>
+    <dimen name="margin_larger_default">16dp</dimen>
+    <dimen name="detail_image_width">300dp</dimen>
+    <dimen name="detail_image_height">450dp</dimen>
+    <dimen name="card_image_size">250dp</dimen>
+    <dimen name="product_details_price_text_size">18sp</dimen>
+    <dimen name="product_details_name_text_size">30sp</dimen>
+    <dimen name="line_height">1dp</dimen>
+    <dimen name="filter_image_size">32dp</dimen>
+    <dimen name="filter_layout_elevation">4dp</dimen>
+</resources>
