@@ -3,6 +3,7 @@
 In this exercise, the proposed challenge is to create a catalogue app that displays [AMARO](https://amaro.com/)'s all-time *best-sellers*.
 
 ![Amaro Test App by Rodrigo Câmara](https://im5.ezgif.com/tmp/ezgif-5-7d57182b5d.gif)
+Amaro Test App by Rodrigo Câmara
 
 ## A few guidelines
 * The app must read product data from this mocked [products resource API](http://www.mocky.io/v2/59b6a65a0f0000e90471257d).
